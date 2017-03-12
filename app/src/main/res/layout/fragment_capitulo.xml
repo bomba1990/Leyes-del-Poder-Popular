@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#fff">
+    <TextView
+        android:layout_width="match_parent" android:layout_height="wrap_content"  android:id="@+id/titulo"
+        style="@style/TitleTituloStyle"  android:gravity="center" android:layout_marginTop="16dp" android:layout_marginBottom="16dp"
+        android:text="Titulo" android:layout_marginLeft="16sp" android:layout_marginRight="16dp"
+        />
+    <android.support.v7.widget.RecyclerView android:layout_width="fill_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="fill_parent"   android:id="@+id/listacapitulos"
+        android:scrollbars="vertical"  >
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

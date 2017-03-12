@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Leyes del Poder Popular</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sobre">Sobre</string>
+    <string name="inicio">Inicio</string>
+    <string name="leyes">Leyes</string>
+    <string name="configuracion">Configuración</string>
+    <string name="send_to">Compartir</string>
+    <string name="descarga_instala_action">Descarga e instala la aplicación de las Leyes del Poder Popular https://goo.gl/q6Ryiz </string>
+    <string name="compartir">Compartir</string>
+    <string name="calificanos">Calificanos</string>
+    <string name="no_play_store">No tienes la Play Store Instalada</string>
+    <string name="points">...</string>
+    <string name="acerca_de">Acerca de</string>
+    <string name="version">Version</string>
+    <string name="autor">Autor</string>
+    <string name="desarrollador">Mariano Ramirez</string>
+    <string name="desarrollador_direccion">Caracas, Venezuela</string>
+    <string name="email">marianoramirez353@gmail.com</string>
+    <string name="correo">Correo</string>
+    <string name="twitter_account">sosinformatico</string>
+    <string name="calendario">calendario</string>
+</resources>

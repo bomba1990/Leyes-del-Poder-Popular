@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/ic_menu_inicio"
+            android:title="@string/inicio" />
+    </group>
+    <item android:title="@string/leyes"
+        android:id="@+id/leyes"
+        >
+        <menu>
+
+
+        </menu>
+    </item>
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/ic_menu_share"
+        android:title="@string/compartir" />
+
+    <item
+        android:id="@+id/nav_rating"
+        android:icon="@drawable/ic_rate"
+        android:title="@string/calificanos" />
+
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_menu_about"
+        android:title="@string/acerca_de" />
+    <item
+        android:id="@+id/nav_send"
+        android:visible="false"
+        android:icon="@drawable/ic_menu_send"
+        android:title="Send" />
+    <item
+        android:id="@+id/nav_gallery"
+        android:visible="false"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="@string/sobre" />
+    <item
+        android:id="@+id/mav_tools"
+        android:visible="false"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="@string/configuracion" />
+
+
+</menu>
