@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,14 +23,10 @@ import com.publisnet.leyesconcejoscomunales.database.Ley;
 import com.publisnet.leyesconcejoscomunales.fragment.HomeFragment;
 import com.publisnet.leyesconcejoscomunales.fragment.LeyFragment;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends RealmBaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener {
-
-    private Realm realm;
     private FragmentManager mFragmentManager;
     private HomeFragment homeFragment;
     private Fragment mContent;
@@ -78,11 +73,6 @@ public class MainActivity extends AppCompatActivity
         Menu menu = navigationView.getMenu();
 
         SubMenu submenu = menu.getItem(1).getSubMenu();
-
-
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
-        // Create a new empty instance of Realm
-        realm = Realm.getInstance(realmConfiguration);
 
         RealmResults<Ley> lista = realm.where(Ley.class).findAll().sort("pos");
 
@@ -188,13 +178,6 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        realm.close();
     }
 
     @Override

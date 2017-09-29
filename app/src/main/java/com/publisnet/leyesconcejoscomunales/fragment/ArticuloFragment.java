@@ -2,7 +2,6 @@ package com.publisnet.leyesconcejoscomunales.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
@@ -14,17 +13,17 @@ import android.widget.TextView;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.ContentViewEvent;
 import com.publisnet.leyesconcejoscomunales.R;
+import com.publisnet.leyesconcejoscomunales.activity.RealmBaseFragment;
 import com.publisnet.leyesconcejoscomunales.database.Articulo;
 import com.publisnet.leyesconcejoscomunales.ui.MyTagHandler;
 
-import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 /**
  * Created by mariano on 03/01/17.
  */
 
-public class ArticuloFragment extends Fragment {
+public class ArticuloFragment extends RealmBaseFragment {
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -32,7 +31,6 @@ public class ArticuloFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     Articulo articulo;
     int artid;
-    private Realm realm;
 
     /**
      * Returns a new instance of this fragment for the given section
@@ -77,7 +75,6 @@ public class ArticuloFragment extends Fragment {
 
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
 
-        realm = Realm.getInstance(realmConfiguration);
         articulo = realm.where(Articulo.class).equalTo("id",artid).findFirst();//.getArticulo(artid+1,"id");
 
         Answers.getInstance().logContentView(new ContentViewEvent()

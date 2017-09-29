@@ -2,7 +2,6 @@ package com.publisnet.leyesconcejoscomunales.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.publisnet.leyesconcejoscomunales.R;
+import com.publisnet.leyesconcejoscomunales.activity.RealmBaseFragment;
 import com.publisnet.leyesconcejoscomunales.adapter.LeyesViewAdapter;
 import com.publisnet.leyesconcejoscomunales.database.Ley;
 import com.publisnet.leyesconcejoscomunales.ui.DividerItemDecoration;
 
-import io.realm.Realm;
 import io.realm.RealmResults;
 
 
@@ -25,10 +24,8 @@ import io.realm.RealmResults;
  * {@link HomeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class HomeFragment extends Fragment {
-
+public class HomeFragment extends RealmBaseFragment {
     private OnFragmentInteractionListener mListener;
-    private Realm realm;
     private View view;
     private RecyclerView recyclerView;
 
@@ -38,12 +35,6 @@ public class HomeFragment extends Fragment {
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        realm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -92,11 +83,6 @@ public class HomeFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        realm.close();
     }
     public interface OnFragmentInteractionListener {
         void onLeySelected(int id);

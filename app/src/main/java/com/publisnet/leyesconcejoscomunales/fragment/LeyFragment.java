@@ -3,21 +3,18 @@ package com.publisnet.leyesconcejoscomunales.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.publisnet.leyesconcejoscomunales.R;
+import com.publisnet.leyesconcejoscomunales.activity.RealmBaseFragment;
 import com.publisnet.leyesconcejoscomunales.adapter.CategoriaFragmentPagerAdapter;
 import com.publisnet.leyesconcejoscomunales.database.Ley;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
-
-public class LeyFragment extends Fragment {
+public class LeyFragment extends RealmBaseFragment {
     private static final String ARG_LEY_ID = "ley_id";
     private static final String TAB_POSITION = "tab_position";
 
@@ -26,7 +23,6 @@ public class LeyFragment extends Fragment {
     private CategoriaFragmentPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private TabLayout tabLayout;
-    private Realm realm;
     private Ley ley;
 
     public LeyFragment() {
@@ -43,14 +39,9 @@ public class LeyFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
-
-        realm = Realm.getInstance(realmConfiguration);
-
         if (getArguments() != null) {
             mId = getArguments().getLong(ARG_LEY_ID);
             ley = realm.where(Ley.class).equalTo("id",mId).findFirst();
-            //.getActionBar().setTitle("priena");
             getActivity().setTitle(ley.titulo);
         }
     }
@@ -80,7 +71,6 @@ public class LeyFragment extends Fragment {
         return view;
     }
 
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -94,44 +84,4 @@ public class LeyFragment extends Fragment {
             mViewPager.setCurrentItem(savedInstanceState.getInt(TAB_POSITION));
     }
 
-
-
-    /*
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    *//**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     *//*
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }*/
 }

@@ -81,13 +81,20 @@ public class SplashActivity extends AppCompatActivity {
 
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
 
-        // Clear the realm from last time
+
         Realm.deleteRealm(realmConfiguration);
 
         // Create a new empty instance of Realm
         realm = Realm.getInstance(realmConfiguration);
         loadLeys();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
+    }
+
     private void loadLeys() {
         // In this case we're loading from local assets.
         // NOTE: could alternatively easily load from network

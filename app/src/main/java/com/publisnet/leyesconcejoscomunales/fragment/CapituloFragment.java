@@ -2,7 +2,6 @@ package com.publisnet.leyesconcejoscomunales.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.publisnet.leyesconcejoscomunales.R;
+import com.publisnet.leyesconcejoscomunales.activity.RealmBaseFragment;
 import com.publisnet.leyesconcejoscomunales.adapter.SimpleAdapter;
 import com.publisnet.leyesconcejoscomunales.adapter.SimpleSectionedRecyclerViewAdapter;
 import com.publisnet.leyesconcejoscomunales.database.Articulo;
@@ -20,20 +20,14 @@ import com.publisnet.leyesconcejoscomunales.ui.DividerItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
-
-public class CapituloFragment extends Fragment {
+public class CapituloFragment extends RealmBaseFragment {
     public Categoria capitulo;
     private Context context;
     public static final String ARG_SECTION_NUMBER = "1";
     private int sectionNumber;
     RecyclerView mRecyclerView;
 
-
-//    private OnFragmentInteractionListener mListener;
-    private Realm realm;
 
     public static CapituloFragment newInstance(int param1) {
         CapituloFragment fragment = new CapituloFragment();
@@ -51,11 +45,6 @@ public class CapituloFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getActivity().getApplicationContext();
-
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
-
-        realm = Realm.getInstance(realmConfiguration);
-
         if (getArguments() != null) {
             sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
         }
@@ -105,11 +94,6 @@ public class CapituloFragment extends Fragment {
             ((TextView)rootView.findViewById(R.id.titulo)).setVisibility(View.GONE);
 
         return rootView;
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        realm.close();
     }
 
 }
