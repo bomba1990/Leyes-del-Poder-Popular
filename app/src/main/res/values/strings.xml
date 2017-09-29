@@ -19,6 +19,7 @@
     <string name="no_play_store">No tienes la Play Store Instalada</string>
     <string name="points">...</string>
     <string name="acerca_de">Acerca de</string>
+    <string name="version_splash">Version %1$s</string>
     <string name="version">Version</string>
     <string name="autor">Autor</string>
     <string name="desarrollador">Mariano Ramirez</string>

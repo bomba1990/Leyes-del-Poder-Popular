@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -44,6 +45,7 @@ public class SplashActivity extends AppCompatActivity {
         try {
             pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             version = pInfo.versionCode;
+            ((TextView) findViewById(R.id.version_text)).setText(getString(R.string.version_splash, pInfo.versionName));
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -51,6 +53,8 @@ public class SplashActivity extends AppCompatActivity {
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         boolean first_time  = sharedPref.getBoolean(AppConfig.SPLASH_FIRST_TIME, true);
         int last_version  = sharedPref.getInt(AppConfig.LAST_VERSION, 0);
+
+
 
 
         mainIntent = new Intent(getApplicationContext(), MainActivity.class);
