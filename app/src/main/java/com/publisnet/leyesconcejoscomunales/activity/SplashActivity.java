@@ -96,7 +96,8 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        realm.close();
+        if(realm != null)
+            realm.close();
     }
 
     private void loadLeys() {
